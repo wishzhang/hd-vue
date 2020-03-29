@@ -1,0 +1,48 @@
+{
+  "name": "hd-vue",
+  "version": "1.0.0",
+  "description": "A Component Library for Vue.js.",
+  "main": "lib/hd-vue.min.js",
+  "unpkg": "lib/hd-vue.min.js",
+  "jsdelivr": "lib/hd-vue.min.js",
+  "scripts": {
+    "dev": "cross-env TARGET=dev UINAME=element-ui webpack",
+    "build": "cross-env TARGET=prod UINAME=element-ui webpack"
+  },
+  "keywords": [
+    "vue",
+    "element-ui",
+    "hd-vue"
+  ],
+  "author": "wishzhang",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.4.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.13.1",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
+    "vue-loader": "^15.9.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.42.1",
+    "webpack-bundle-analyzer": "^3.6.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "element-ui": "^2.13.0",
+    "vue": "^2.6.11"
+  },
+  "files": [
+    "lib",
+    "src",
+    "packages",
+    "LICENSE",
+    "README.md"
+  ]
+}
