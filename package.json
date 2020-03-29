@@ -9,6 +9,10 @@
     "dev": "cross-env TARGET=dev UINAME=element-ui webpack",
     "build": "cross-env TARGET=prod UINAME=element-ui webpack"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wishzhang/hd-vue.git"
+  },
   "keywords": [
     "vue",
     "element-ui",
