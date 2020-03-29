@@ -1,6 +1,6 @@
 {
   "name": "hd-vue",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A Component Library for Vue.js.",
   "main": "lib/hd-vue.min.js",
   "unpkg": "lib/hd-vue.min.js",
