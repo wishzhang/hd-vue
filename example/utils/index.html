@@ -44,6 +44,33 @@
 </div>
 </body>
 <script>
+    // 防抖
+    const _debounce = (delay, isFirst = false) => {
+        let preTime = Number.MAX_SAFE_INTEGER;
+        let timer = 0;
+        return (func) => {
+            let nowTime = new Date().getTime();
+            if (isFirst) {
+                isFirst = false;
+                preTime = nowTime;
+                func();
+                timer = setTimeout(() => {
+                    isFirst = true;
+                },delay)
+                return;
+            }
+
+            if (nowTime - preTime < delay) {
+                clearTimeout(timer);
+            }
+            preTime = nowTime;
+            timer = setTimeout(() => {
+                isFirst = true;
+                func();
+            }, delay);
+        }
+    }
+    const debounce = _debounce(1000, true);
     // 节流
     const _throttle = (ms = 300, isFirst = false) => {
         let tmp = 0;
@@ -102,7 +129,7 @@
         },
         methods: {
             myinput() {
-                throttle(function () {
+                debounce(function () {
                     console.log('...')
                 })
 

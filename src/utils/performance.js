@@ -1,11 +1,29 @@
-const _debounce = (func, ms) => {
+// 防抖
+export const _debounce = (delay, immediate = false) => {
+    let preTime = 0;
+    let timer = 0;
+    return (func) => {
+        let nowTime = new Date().getTime();
 
+        if (immediate) {
+            immediate = false;
+            func();
+        }
+
+        if (nowTime - preTime < delay) {
+            preTime = nowTime;
+            clearInterval(timer);
+        }
+        timer = setTimeout(() => {
+            immediate = true;
+            func();
+        }, delay);
+    }
 }
 
 // 节流
-const _throttle = (ms = 300, isFirst = false) => {
-    let tmp = 0;
-    let first = isFirst;
+export const _throttle = (delay = 300, immediate = false) => {
+    let first = immediate;
     let flag = true;
     let timer = 0;
     let pretimer = timer;
@@ -17,31 +35,32 @@ const _throttle = (ms = 300, isFirst = false) => {
 
         if (flag) {
             flag = false;
-            if (isFirst && first) {
+            if (immediate && first) {
                 first = false;
                 flag = true;
                 waitFun();
-                tmp = setTimeout(() => {
+                setTimeout(() => {
                     if (pretimer === timer) {
                         first = true;
                     }
-                }, ms);
+                }, delay);
             } else {
                 timer = setTimeout(() => {
                     flag = true;
                     waitFun();
-                    if (isFirst) {
+                    if (immediate) {
                         pretimer = timer;
-                        tmp = setTimeout(() => {
+                        setTimeout(() => {
                             if (pretimer === timer) {
                                 first = true;
                             }
-                        }, ms);
+                        }, delay);
                     }
-                }, ms);
+                }, delay);
             }
         }
     }
 }
 
-export const throttle = _throttle(1000,false);
+export const defaultThrottle = _throttle(1000, false);
+export const defaultDebounce = _debounce(1000, false);
