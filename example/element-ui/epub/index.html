@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EPUB.js Highlights Example</title>
 
-    <script src="./epub.js"></script>
+    <script src="epub.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
 
@@ -65,7 +65,7 @@
 
 <script>
     // Load the opf
-    var book = ePub("./abc.epub" || "https://s3.amazonaws.com/moby-dick/OPS/package.opf");
+    var book = ePub("./test.epub" || "https://s3.amazonaws.com/moby-dick/OPS/package.opf");
 
     var rendition = book.renderTo("viewer", {
         width: "100%",

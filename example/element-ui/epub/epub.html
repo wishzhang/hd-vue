@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EPUB.js Highlights Example</title>
+
+    <script src="./epub.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.17/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.12.0/theme-chalk/index.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.12.0/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css"/>
+    <!--  <link rel="stylesheet" href="../../../lib/index.css"/>-->
+    <!--  <script src="../../../lib/avue.js"></script>-->
+    <link rel="stylesheet" href="../../../lib/hd-vue.min.css"/>
+    <script src="../../../lib/hd-vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="viewClick">查看</button>
+    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+
+
+    llll
+    <avue-epub book-url="./test.epub" v-if="visible" @close="visible=false"></avue-epub>
+    <div>hhhk</div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                visible: true
+            }
+        },
+        methods: {
+            viewClick() {
+                this.visible = true;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

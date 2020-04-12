@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title></title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.17/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.12.0/theme-chalk/index.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.12.0/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css"/>
+    <!--  <link rel="stylesheet" href="../../../lib/index.css"/>-->
+    <!--  <script src="../../../lib/avue.js"></script>-->
+    <link rel="stylesheet" href="../../../lib/hd-vue.css"/>
+    <script src="../../../lib/hd-vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <div class="demo-block">
+        <avue-notice @item-click="itemClick" :option="option" :data="list" @page-change="pageChange"></avue-notice>
+    </div>
+</div>
+</body>
+
+<script>
+    const tmpList = [
+        {
+            img: 'https://avuejs.com/images/logo-bg.jpg',
+            title: '史蒂夫·乔布斯 关注了你史蒂夫·乔布斯 关注了你史蒂夫·乔布斯 关注了你史蒂夫·乔布斯 关注了你史蒂夫·乔布斯 关注了你',
+            subtitle: '05-08 15:08',
+            tag: '已经开始',
+            status: 0
+        },
+        {
+            img: 'https://avuejs.com/images/logo-bg.jpg',
+            title: '斯蒂夫·沃兹尼亚克 关注了你',
+            subtitle: '05-08 15:08',
+            tag: '未开始',
+            status: 1
+        },
+        {
+            img: 'https://avuejs.com/images/logo-bg.jpg',
+            title: '乔纳森·伊夫 关注了你',
+            subtitle: '05-08 15:08',
+            tag: '有警告',
+            status: 2
+        },
+        {
+            img: 'https://avuejs.com/images/logo-bg.jpg',
+            title: '蒂姆·库克 关注了你',
+            subtitle: '05-08 15:08',
+            status: 3,
+            tag: '有错误'
+        },
+        {
+            img: 'https://avuejs.com/images/logo-bg.jpg',
+            title: '比尔·费尔南德斯 关注了你',
+            subtitle: '05-08 15:08',
+            status: 4,
+            tag: '已完成'
+        }];
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                option: {
+                    props: {
+                        img: 'img',
+                        title: 'title',
+                        subtitle: 'subtitle',
+                        tag: 'tag',
+                        status: 'status'
+                    },
+                    total:16
+                },
+                list: tmpList,
+            }
+        },
+        created() {
+
+        },
+        methods: {
+            pageChange(page, done) {
+                setTimeout(() => {
+                    console.log('页码' + page)
+                    this.list = this.list.concat(tmpList);
+                    done();
+                }, 1000)
+            },
+            itemClick(item,index,data){
+                console.dir(item);
+                console.dir(index);
+                console.dir(data);
+            }
+        }
+    })
+</script>
+
+</html>
