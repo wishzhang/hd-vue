@@ -1,0 +1,18 @@
+.avue-numrange {
+  position: relative;
+
+  &__wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__separator {
+    position: relative;
+    top: -1px;
+    display: inline-block;
+    padding: 0 6px;
+    font-size: 14px;
+    color: #303133;
+  }
+}
