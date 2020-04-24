@@ -22,11 +22,8 @@
             </div>
         </div>
         <!--底部-->
-        <div>
-            <div v-if="list.length===0" :class="b('nothing')">
-                暂无数据
-            </div>
-            <div v-else-if="!hasLoadAll" :class="b('more')"
+        <div v-if="showFooterKey&&list.length!==0">
+            <div v-if="!hasLoadAll" :class="b('more')"
                  v-loading="loading"
                  @click="handleClick">
                 加载更多
@@ -34,6 +31,12 @@
             <div v-else :class="b('all')">
                 已加载全部
             </div>
+        </div>
+        <!--空视图-->
+        <div v-if="list.length===0">
+            <slot name="emptySlot">
+                <div :class="b('nothing')">暂无数据</div>
+            </slot>
         </div>
     </div>
 </template>
@@ -71,6 +74,9 @@
             }
         },
         computed: {
+            showFooterKey() {
+                return this.option.showFooter || true;
+            },
             props() {
                 return this.option.props || propsDefault;
             },

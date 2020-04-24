@@ -1,6 +1,8 @@
 # hd-vue
 
 ## Project setup
+node版本 12.16.2
+
 ```
 npm install
 ```

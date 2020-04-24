@@ -22,7 +22,11 @@
 <body>
 <div id="app">
     <div class="demo-block">
-        <avue-notice @item-click="itemClick" :option="option" :data="list" @page-change="pageChange"></avue-notice>
+        <avue-notice @item-click="itemClick" :option="option" :data="list" @page-change="pageChange">
+            <template slot="emptySlot">
+                dd
+            </template>
+        </avue-notice>
     </div>
 </div>
 </body>
@@ -76,9 +80,9 @@
                         tag: 'tag',
                         status: 'status'
                     },
-                    total:16
+                    total: 16
                 },
-                list: tmpList,
+                list: [],
             }
         },
         created() {
@@ -92,7 +96,7 @@
                     done();
                 }, 1000)
             },
-            itemClick(item,index,data){
+            itemClick(item, index, data) {
                 console.dir(item);
                 console.dir(index);
                 console.dir(data);
