@@ -1,0 +1,338 @@
+.avue-pdf {
+  $theme-color: #3380ff;
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+  background-color: #44454a;
+  /* 书籍滚动条
+   ---------------------------------------*/
+  &__scrollbar {
+    position: absolute;
+    right: 0;
+    height: calc(100%);
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: default;
+
+    /deep/ .el-slider__runway {
+      background-color: #7f808a;
+      width: 4px !important;
+    }
+
+    /deep/ .el-slider__bar {
+      background-color: #3b3c43;
+      width: 4px !important;
+    }
+
+    /deep/ .el-slider__button {
+      width: 12px;
+      height: 18px;
+      border: 1px solid #3d3e44;
+      background: #7f808a;
+      border-radius: 0;
+    }
+
+    /deep/ .el-slider__button-wrapper {
+      left: -16px !important;
+    }
+  }
+
+  &__book {
+    position: relative;
+    width: 660px;
+    height: 100%;
+    background-color: #f5f5f5;
+
+    /* 标题栏
+     ---------------------------------------*/
+    &__header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 34px;
+      line-height: 24px;
+      background-color: #f5f5f5;
+      color: #a6a8b1;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 12px;
+      z-index: 10;
+
+      &__title {
+        width: 40%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: left;
+      }
+
+      &__section {
+        width: 50%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: right;
+      }
+
+      &__page {
+        width: 110px - 34px;
+        margin-left: 28px;
+        text-align: right;
+      }
+    }
+
+    /* 书本内容区域
+     ---------------------------------------*/
+    &__content {
+      box-sizing: border-box;
+      height: 100%;
+      padding-top: 54px;
+      padding-bottom: 10px;
+      position: relative;
+      z-index: 9;
+
+      .epub-container::-webkit-scrollbar {
+        display: none
+      }
+
+      #epub__book__viewer {
+        height: 100%;
+      }
+    }
+
+    /* 定位区域
+     ---------------------------------------*/
+    &__box1 {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: absolute;
+      top: 18px;
+      left: -90px;
+      width: 90px;
+      color: white;
+      z-index: 8;
+
+      &__button {
+        display: flex;
+        align-items: center;
+        width: 60px;
+        height: 40px;
+        border-radius: 20px 0 0 20px;
+        cursor: pointer;
+        transition: width 0.4s;
+        font-size: 0;
+        margin-bottom: 15px;
+
+        &:hover {
+          width: 80px;
+
+          i {
+            margin-left: 15px;
+            margin-right: 4px;
+          }
+
+          em {
+            left: 0;
+          }
+        }
+
+        i {
+          font-size: 20px;
+          margin-left: 21px;
+        }
+
+        em {
+          position: relative;
+          top: -1px;
+          white-space: nowrap;
+          align-self: auto;
+          font-size: 14px;
+          font-style: normal;
+          padding: 0 10px 0 0;
+          left: 50px;
+          transition: left 0.4s;
+        }
+      }
+
+      &__button--90:hover {
+        width: 90px;
+      }
+    }
+
+    &__box2 {
+      width: 40px;
+      position: absolute;
+      right: -70px;
+      bottom: 20px;
+      border: 1px solid #7B7D8D;
+      color: #7f808a;
+      font-size: 20px;
+      box-sizing: border-box;
+
+      &__prev {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 104px;
+        border-bottom: 1px solid #7B7D8D;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #38393d;
+          color: $theme-color;
+        }
+      }
+
+      &__next {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 104px;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #38393d;
+          color: $theme-color;
+        }
+      }
+    }
+
+    &__box3 {
+
+    }
+
+    // 目录
+    &__catalogue {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      z-index: 11;
+
+      &__box {
+        position: absolute;
+        width: 500px;
+        background-color: white;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+
+        &__header {
+          margin: 50px 56px 43px 23px;
+          font-size: 28px;
+          height: 28px;
+          line-height: 28px;
+          text-align: center;
+          color: #3d3e45;
+          font-weight: normal;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        &__content {
+          padding: 10px 55px 10px 35px;
+          height: 100%;
+          background-color: white;
+
+          &__section {
+            &__title {
+              display: flex;
+              justify-content: space-between;
+              line-height: 22px;
+              padding: 14px 0;
+              position: relative;
+              font-weight: bold;
+              color: #393939;
+              border-bottom: 1px solid #efefef;
+              font-size: 14px;
+              cursor: pointer;
+
+              &:hover {
+                .name, .page {
+                  color: $theme-color;
+                }
+              }
+
+              .name {
+
+              }
+
+              .page {
+                color: #bdb8b8;
+                font-weight: normal;
+              }
+            }
+
+            &__chapter {
+              display: flex;
+              justify-content: space-between;
+              line-height: 22px;
+              padding: 14px 0;
+              padding-left: 10px;
+              position: relative;
+              color: #555555;
+              border-bottom: 1px solid #efefef;
+              font-size: 14px;
+              cursor: pointer;
+
+              &:hover {
+                .name, .page {
+                  color: $theme-color;
+                }
+              }
+
+              .name {
+
+              }
+
+              .page {
+                color: #bdb8b8;
+                font-weight: normal;
+              }
+            }
+          }
+        }
+      }
+
+      &__layer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: 0.6;
+        background-image: linear-gradient(-89deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 76%, #000000 100%);
+      }
+    }
+  }
+
+  /* 关闭按钮
+   ----------------------------------------*/
+  &__close {
+    position: absolute;
+    right: 28px;
+    top: 5px;
+    padding: 5px;
+    color: rgba(white, 0.7);
+    cursor: pointer;
+  }
+
+  /* 样式覆盖
+   ----------------------------------------*/
+}

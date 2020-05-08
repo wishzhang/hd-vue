@@ -1,5 +1,6 @@
 const version = process.env.VERSION || require('../package.json').version;
 import components from 'ui/index';
+import '../styles/index.scss';
 
 const install = function (Vue, opts = {}) {
     components.map(component => {

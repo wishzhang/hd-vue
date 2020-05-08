@@ -1,9 +1,10 @@
 const path = require('path');
 const aliases = require('./alias');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const version = process.env.VERSION || require('../package.json').version;
 const banner =
-    ' hd-vue.js v' +
+    ' hd-vue v' +
     version +
     '\n' +
     ' (c) 2020-' +
@@ -12,7 +13,8 @@ const banner =
     ' Released under the MIT License.\n';
 const externals = {
     'vue': 'Vue',
-    'element-ui': 'ELEMENT'
+    'element-ui': 'ELEMENT',
+    'vue-pdf': 'pdf'
 };
 const resolve = p => {
     const base = p.split('/')[0];
@@ -27,7 +29,7 @@ const builds = {
     prod: {
         entry: resolve('src/index.js'),
         dest: resolve('lib'),
-        filename: 'hd-vue.min.js',
+        filename: 'hd-vue.min',
         env: 'production',
         externals: externals,
         optimization: {
@@ -38,7 +40,7 @@ const builds = {
     dev: {
         entry: resolve('src/index.js'),
         dest: resolve('lib'),
-        filename: 'hd-vue.js',
+        filename: 'hd-vue',
         env: 'development',
         externals: externals,
         optimization: {
@@ -55,15 +57,16 @@ function genConfig(name) {
             app: [opts.entry]
         },
         output: {
-            filename: opts.filename,
+            filename: opts.filename + '.js',
             path: opts.dest,
-            chunkFilename: '[id].js',
+            chunkFilename: '[name].js',
             libraryTarget: 'umd',
             library: 'HDVUE',
             umdNamedDefine: true
         },
         externals: opts.externals,
         plugins: [
+            new ExtractTextPlugin(opts.filename + '.css'),
             new webpack.BannerPlugin(banner)
         ],
         optimization: opts.optimization,
@@ -82,7 +85,7 @@ function genConfig(name) {
     if (!isProd) {
         config = Object.assign(config, {
             watch: true,
-            watchOptions:{
+            watchOptions: {
                 ignored: /node_modules/
             }
         })
